@@ -1,0 +1,57 @@
+# @(#)$Id: ldap.conf,v 1.38 2006/05/15 08:13:31 lukeh Exp $
+#
+# This is the configuration file for the LDAP nameservice
+# switch library and the LDAP PAM module.
+#
+# The man page for this file is pam_ldap(5)
+#
+# PADL Software
+# http://www.padl.com
+#
+
+# THIS FILE IS MANAGED BY PUPPET!!!
+# LOCAL CHANGES WILL BE LOST!!!
+
+<%-
+  def bool2str(v)
+    case v
+    when true
+      'yes'
+    when false
+      'no'
+    else
+      v
+    end
+  end
+-%>
+<%- options = scope.lookupvar('::pam_ldap::merged_options') -%>
+<%- options.keys.sort.each do |k| -%>
+<%- if k == 'rootbindpw' then next end -%>
+<%- v = options[k] -%>
+<%- if v.is_a?(Hash) -%>
+<%= k %>
+<%- v.keys.sort.each do |key| -%>
+    <%- value = v[key] -%>
+    <%- if value.is_a?(Array) -%>
+    <%- value.each do |a| -%>
+    <%- if a != '' -%>
+    <%= key %> <%= bool2str(a) %>
+    <%- end -%>
+    <%- end -%>
+    <%- elsif value != '' -%>
+    <%= key %> <%= bool2str(value) %>
+    <%- end -%>
+<%- end -%>
+<%- else -%>
+<%- if v.is_a?(Array) -%>
+<%- v.each do |a| -%>
+<%- if a != '' -%>
+<%= k %> <%= bool2str(a) %>
+<%- end -%>
+<%- end -%>
+<%- elsif v != :undef and v != '' -%>
+<%= k %> <%= bool2str(v) %>
+<%- end -%>
+<%- end -%>
+<%- end -%>
+
