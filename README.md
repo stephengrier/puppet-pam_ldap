@@ -22,9 +22,9 @@ can be specified by passing a hash structure via the pam_entries parameter.
 
 ## Requirements
 
-#herculesteam-augeasproviders_pam
-#stephengrier-cacerts
-#puppetlabs-stdlib
+* herculesteam-augeasproviders_pam
+* stephengrier-cacerts
+* puppetlabs-stdlib
 
 ## Usage
 
