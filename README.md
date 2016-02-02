@@ -22,9 +22,9 @@ can be specified by passing a hash structure via the pam_entries parameter.
 
 ## Requirements
 
-herculesteam-augeasproviders_pam
-stephengrier-cacerts
-puppetlabs-stdlib
+#herculesteam-augeasproviders_pam
+#stephengrier-cacerts
+#puppetlabs-stdlib
 
 ## Usage
 
@@ -112,18 +112,18 @@ Default: present
 
 #### type
 
-The PAM management group the rule corresponds to. Valid values are 'auth', 'account',
-'password' and 'session'.
+The PAM management group the rule corresponds to. Valid values are `auth`, `account`,
+`password` and `session`.
 Default: undef
 
 #### control
 
-The PAM control, eg. 'required', 'requisite', 'sufficient', 'optional', etc.
+The PAM control, eg. `required`, `requisite`, `sufficient`, `optional`, etc.
 Default: undef
 
 #### arguments
 
-Any PAM module arguments, eg. 'use_first_pass' etc.
+Any PAM module arguments, eg. `use_first_pass` etc.
 Default: undef
 
 #### position
