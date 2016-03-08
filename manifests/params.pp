@@ -9,7 +9,11 @@ class pam_ldap::params {
       $secret_file = '/usr/share/libpam-ldap/ldap.secret'
     }
     redhat: {
-      $packages = [ 'pam_ldap' ]
+      if versioncmp($::operatingsystemmajrelease, '7') >= 0 {
+        $packages = [ 'nss-pam-ldapd' ]
+      } else {
+        $packages = [ 'pam_ldap' ]
+      }
       $pam_ldap_conf = '/etc/pam_ldap.conf'
       $secret_file = '/etc/pam_ldap.secret'
     }
